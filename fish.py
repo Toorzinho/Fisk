@@ -9,7 +9,7 @@ class Fish:
         self.fishy = pygame.image.load('fish_image.png')
         self.fishy = pygame.transform.scale(self.fishy, (40,40))
         
-    def update(self, position, velocity):
+    def update(self):
         self.position = self.position + self.velocity
 
     def draw(self):

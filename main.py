@@ -25,7 +25,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    
+    fish1.update()
     fish1.draw()
 
     pygame.display.flip()
