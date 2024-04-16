@@ -5,12 +5,14 @@ from vector import Vector
 WIDTH, HEIGHT = 800, 600
 
 class Fish:
-    def __init__(self, position, velocity, screen):
-        self.position = position
-        self.velocity = velocity
+    def __init__(self, screen):
         self.screen = screen
         self.fishy = pygame.image.load('fish_image.png')
-        self.fishy = pygame.transform.scale(self.fishy, (40,40))
+        self.fishy = pygame.transform.scale(self.fishy, (40, 40))
+
+        # Generate random initial position and velocity for each fish
+        self.position = Vector(random.randint(0, WIDTH), random.randint(0, HEIGHT))
+        self.velocity = Vector(random.uniform(-1, 1), random.uniform(-1, 1))
 
     def update(self):
         # Bounce off the walls
@@ -22,13 +24,4 @@ class Fish:
         self.position = self.position + self.velocity
 
     def draw(self):
-        self.screen.blit(self.fishy,(self.position.x,self.position.y))
-
-def generate_random_fish(screen):
-    fish_list = []
-    for _ in range(10):  # Adjust the number of fish as needed
-        position = Vector(random.randint(0, WIDTH), random.randint(0, HEIGHT))
-        velocity = Vector(random.uniform(-1, 1), random.uniform(-1, 1))
-        fish = Fish(position, velocity, screen)
-        fish_list.append(fish)
-    return fish_list
+        self.screen.blit(self.fishy, (self.position.x, self.position.y))
