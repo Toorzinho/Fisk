@@ -1,4 +1,3 @@
-import vector as v
 import pygame
 
 WIDTH, HEIGHT = 800, 600
