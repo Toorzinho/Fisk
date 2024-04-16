@@ -6,7 +6,8 @@ import fish as f
 pygame.init()
 
 #Create screen
-screen =  pygame.display.set_mode((800,600))
+WIDTH, HEIGHT = 800,600
+screen =  pygame.display.set_mode((WIDTH, HEIGHT))
 
 position1 = v.Vector(400,300)
 velocity1 = v.Vector(1,1)
@@ -25,6 +26,9 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    
+    
     fish1.update()
     fish1.draw()
 
