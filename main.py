@@ -1,20 +1,15 @@
-import pygame  
-import vector as v
-import fish as f
+import pygame
+from vector import Vector
+from fish import Fish, generate_random_fish
 
-#Start game
+# Start game
 pygame.init()
 
-#Create screen
-WIDTH, HEIGHT = 800,600
-screen =  pygame.display.set_mode((WIDTH, HEIGHT))
+# Create screen
+WIDTH, HEIGHT = 800, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
-position1 = v.Vector(400,300)
-velocity1 = v.Vector(1,1)
-fish1 = f.Fish(position1, velocity1,screen)
-
-fish1.draw()
-pygame.display.flip()
+fish_list = generate_random_fish(screen)
 
 # Game loop
 running = True
@@ -27,10 +22,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-    fish1.update()
-    fish1.draw()
+    for fish in fish_list:
+        fish.update()
+        fish.draw()
 
     pygame.display.flip()
 
-
-
+pygame.quit()
